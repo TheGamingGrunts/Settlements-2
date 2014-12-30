@@ -9,15 +9,16 @@ import me.projectx.settlements.managers.SettlementManager;
 
 public class SettlementPlayer implements SettlementPlayerLayout {
 
+	private String name;
 	private UUID uuid;
 	private long setId;
 	private Rank rank;
 	private ChatChannel channel;
-	
+
 	public SettlementPlayer(UUID uuid){
 		this.uuid = uuid;
 	}
-	
+
 	@Override
 	public UUID getUniqueId() {
 		return uuid;
@@ -26,7 +27,7 @@ public class SettlementPlayer implements SettlementPlayerLayout {
 	@Override
 	public Settlement getSettlement() {
 		return SettlementManager.getManager().getSettlement(setId);
-	} 
+	}
 
 	@Override
 	public Rank getRank() {
@@ -35,7 +36,8 @@ public class SettlementPlayer implements SettlementPlayerLayout {
 
 	@Override
 	public void setSettlement(Settlement settlement) {
-		this.setId = settlement.getId();	
+		settlement.addMember(this);
+		this.setId = settlement.getId();
 	}
 
 	@Override
@@ -51,5 +53,15 @@ public class SettlementPlayer implements SettlementPlayerLayout {
 	@Override
 	public void setChatChannel(ChatChannel channel) {
 		this.channel = channel;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+
 	}
 }

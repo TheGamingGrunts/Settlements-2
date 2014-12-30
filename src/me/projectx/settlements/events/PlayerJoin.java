@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoin implements Listener {
-	
+
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
 		Player p = e.getPlayer();
@@ -19,9 +19,10 @@ public class PlayerJoin implements Listener {
 			e.setJoinMessage(ChatColor.GRAY + "Welcome to Project-X, " + ChatColor.AQUA + p.getName());
 		}else{
 			SettlementPlayer sp = PlayerManager.getManager().loadPlayer(p.getUniqueId());
-			sp.getSettlement().sendSettlementMessage(ChatColor.GREEN + "Settlement member " + ChatColor.RED + 
+			sp.getSettlement().sendSettlementMessage(ChatColor.GREEN + "Settlement member " + ChatColor.RED +
 					p.getName() + ChatColor.GREEN + " has logged in.");
-			//send alliance message
-		}	
+			//TODO send alliance message
+			//Note: We should remove the settlement message, so its not sent twice to Settlement players :P
+		}
 	}
 }
