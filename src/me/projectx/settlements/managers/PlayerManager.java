@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import me.projectx.settlements.interfaces.PlayerManagerLayout;
 import me.projectx.settlements.models.SettlementPlayer;
 
-public class PlayerManager {
+public class PlayerManager implements PlayerManagerLayout{
 	
 	private static PlayerManager pm = new PlayerManager();
 	private List<SettlementPlayer> players = new ArrayList<SettlementPlayer>();
