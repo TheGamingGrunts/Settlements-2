@@ -82,12 +82,12 @@ public class SettlementManager implements SettlementManagerLayout {
 	public void loadSettlements() {
 		//TODO Untested
 		try {
-			ResultSet results = sql.queryIn("SELECT * FROM settlements WHERE deleted = 0");
+			ResultSet results = sql.query("SELECT * FROM settlements WHERE deleted = 0");
 
 			while (results.next()) {
 				Settlement set = new Settlement(results.getString("name"));
 				set.setId(results.getLong("id"));
-				ResultSet citizens = sql.queryIn("SELECT * FROM CITIZENS WHERE settlement = ?", results.getLong("id"));
+				ResultSet citizens = sql.query("SELECT * FROM CITIZENS WHERE settlement = ?", results.getLong("id"));
 				while (citizens.next()) {
 					SettlementPlayer player = new SettlementPlayer(UUID.fromString(citizens.getString("uuid")));
 					player.setRank(Rank.valueOf(citizens.getInt("rank")));

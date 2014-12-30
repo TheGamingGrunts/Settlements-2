@@ -63,12 +63,12 @@ public class SQLManager {
 	 */
 	public void setupTables(){
 		//TODO Needs to be tested, I did a lot without double checking to see if they work :P
-		queryOut("CREATE TABLE IF NOT EXISTS settlements(id BIGINT, leader BIGINT, name VARCHAR(255), description VARCHAR(255), deleted TINYINT(1))");
-		queryOut("CREATE TABLE IF NOT EXISTS citizens(id BIGINT, name VARCHAR(16), uuid VARCHAR(255), settlement BIGINT, rank TINYINT(3))");
-		queryOut("CREATE TABLE IF NOT EXISTS chunks(id BIGINT, player BIGINT, world VARCHAR(255), x BIGINT, z BIGINT");
-		queryOut("CREATE TABLE IF NOT EXISTS alliances(id BIGINT, setA BIGINT, setB BIGINT)");
-		queryOut("CREATE TABLE IF NOT EXISTS wars(id BIGINT, setA BIGINT, setB BIGINT)");
-		queryOut("CREATE TABLE IF NOT EXISTS sethomes(id BIGINT, x BITINT, y BIGINT, z BIGINT, pitch BIGINT, yaw BIGINT, world VARCHAR(255), player BIGINT)");
+		update("CREATE TABLE IF NOT EXISTS settlements(id BIGINT, leader BIGINT, name VARCHAR(255), description VARCHAR(255), deleted TINYINT(1))");
+		update("CREATE TABLE IF NOT EXISTS citizens(id BIGINT, name VARCHAR(16), uuid VARCHAR(255), settlement BIGINT, rank TINYINT(3))");
+		update("CREATE TABLE IF NOT EXISTS chunks(id BIGINT, player BIGINT, world VARCHAR(255), x BIGINT, z BIGINT");
+		update("CREATE TABLE IF NOT EXISTS alliances(id BIGINT, setA BIGINT, setB BIGINT)");
+		update("CREATE TABLE IF NOT EXISTS wars(id BIGINT, setA BIGINT, setB BIGINT)");
+		update("CREATE TABLE IF NOT EXISTS sethomes(id BIGINT, x BITINT, y BIGINT, z BIGINT, pitch BIGINT, yaw BIGINT, world VARCHAR(255), player BIGINT)");
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class SQLManager {
 	 * @param args An Object that will replace the ? marks. Put IN THE ORDER of the ? mark you want to replace
 	 * @throws SQLException
 	 */
-	public void queryOut(String sql, Object... args){
+	public void update(String sql, Object... args){
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			for (int i = 0; i < args.length; i++) {
@@ -103,7 +103,7 @@ public class SQLManager {
 	 * @return A ResultSet of the query executed
 	 * @throws SQLException
 	 */
-	public ResultSet queryIn(String sql, Object... args){
+	public ResultSet query(String sql, Object... args){
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			for (int i = 0; i < args.length; i++) {
