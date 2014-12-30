@@ -21,4 +21,11 @@ public interface PlayerManagerLayout {
 	 * @return The SettlementPlayer associated with the UUID
 	 */
 	public SettlementPlayer getPlayer(UUID id);
+	
+	/**
+	 * Register a new server player
+	 * 
+	 * @param uuid : The UUID of the player
+	 */
+	public void registerPlayer(UUID uuid);
 }

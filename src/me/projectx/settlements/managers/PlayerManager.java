@@ -32,4 +32,14 @@ public class PlayerManager implements PlayerManagerLayout{
 		}
 		return null;
 	}
+	
+	public void registerPlayer(UUID uuid){
+		players.add(new SettlementPlayer(uuid));
+		//Database call
+	}
+	
+	public SettlementPlayer loadPlayer(UUID uuid){
+		//Database call
+		return new SettlementPlayer(uuid); //temp
+	}
 }
