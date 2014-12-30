@@ -5,13 +5,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Settlements extends JavaPlugin {
 
-	private Plugin plugin;
+	private static Plugin plugin;
 
 	public void onEnable() {
 		plugin = this;
 	}
 
-	public Plugin getPlugin() {
+	public static Plugin getPlugin() {
 		return plugin;
 	}
 
