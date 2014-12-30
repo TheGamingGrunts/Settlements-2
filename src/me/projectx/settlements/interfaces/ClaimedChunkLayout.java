@@ -2,9 +2,9 @@ package me.projectx.settlements.interfaces;
 
 import me.projectx.settlements.enums.ChunkType;
 import me.projectx.settlements.models.Settlement;
+import me.projectx.settlements.models.SettlementPlayer;
 
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 
 public interface ClaimedChunkLayout {
 
@@ -34,7 +34,7 @@ public interface ClaimedChunkLayout {
 	 *
 	 * @return Player that owns this
 	 */
-	public Player getOwner();
+	public SettlementPlayer getOwner();
 
 	/**
 	 * Sets current owner
@@ -42,7 +42,7 @@ public interface ClaimedChunkLayout {
 	 * @param p
 	 *            Player to set owner to
 	 */
-	public void setOwner(Player p);
+	public void setOwner(SettlementPlayer player);
 
 	/**
 	 * Gets current Settlement

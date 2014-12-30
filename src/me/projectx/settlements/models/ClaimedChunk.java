@@ -4,66 +4,78 @@ import me.projectx.settlements.enums.ChunkType;
 import me.projectx.settlements.interfaces.ClaimedChunkLayout;
 
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 
 public class ClaimedChunk implements ClaimedChunkLayout {
 
-	// TODO Add SettlementPlayer
-	public ClaimedChunk(double x, double y, World world) {
+	private SettlementPlayer player;
+	private double x;
+	private double z;
+	private World world;
+	private Settlement set;
+	private ChunkType type = ChunkType.NORMAL;
 
+	public ClaimedChunk(SettlementPlayer player, double x, double z, World world) {
+		this.player = player;
+		this.x = x;
+		this.z = z;
+		this.world = world;
+		this.set = player.getSettlement();
+	}
+
+	public ClaimedChunk(SettlementPlayer player, double x, double z,
+			World world, ChunkType type) {
+		this.player = player;
+		this.x = x;
+		this.z = z;
+		this.world = world;
+		this.set = player.getSettlement();
+		this.type = type;
 	}
 
 	@Override
 	public double getX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public double getZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return z;
 	}
 
 	@Override
 	public World getWorld() {
-		// TODO Auto-generated method stub
-		return null;
+		return world;
 	}
 
 	@Override
-	public Player getOwner() {
-		// TODO Auto-generated method stub
-		return null;
+	public SettlementPlayer getOwner() {
+		return player;
 	}
 
 	@Override
-	public void setOwner(Player p) {
-		// TODO Auto-generated method stub
-
+	public void setOwner(SettlementPlayer player) {
+		this.player = player;
 	}
 
 	@Override
 	public Settlement getSettlement() {
-		// TODO Auto-generated method stub
-		return null;
+		return set;
 	}
 
 	@Override
 	public void setSettlement(Settlement set) {
-		// TODO Auto-generated method stub
+		this.set = set;
 
 	}
 
 	@Override
 	public ChunkType getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return type;
 	}
 
 	@Override
 	public void setType(ChunkType type) {
-		// TODO Auto-generated method stub
+		this.type = type;
 
 	}
 
